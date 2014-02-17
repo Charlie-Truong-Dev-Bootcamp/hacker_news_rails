@@ -6,7 +6,7 @@
     <li><%= link_to post.title, post.url %></li>
     <li>Author: <%=link_to post.user.username, user_path(post.user)%> </li>
     <li>Date: <%= post.created_at %> </li>
-    <li><%= link_to post.comments.count + " Comments", post_comments_path(post) %></li>
+    <li><%= link_to post.comments.count.to_s + " Comments", post_comments_path(post) %></li>
   </ul>
 </li>
 <% end %>
