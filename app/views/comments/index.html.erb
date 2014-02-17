@@ -2,9 +2,15 @@
   <% post = @model %>
   <h3><%= link_to post.title, post.url %></h3>
   <%=form_for [:post, @comment] do |f| %>
-    <%= f.label :text, "Comment" %>
-    <%= f.text_area :text, size: "30x5" %>
-    <%= f.submit "Submit Comment" %>
+    <ul>
+      <li>
+        <%= f.label :text, "Comment" %>
+        <%= f.text_area :text, size: "30x5" %>
+      </li>
+      <li>
+        <%= f.submit "Submit Comment" %>
+      </li>
+    </ul>
   <% end %>
 <% end %>
 
