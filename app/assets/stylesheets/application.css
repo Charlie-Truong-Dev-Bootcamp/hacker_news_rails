@@ -39,3 +39,14 @@ nav ul li a{
 nav ul li a:visited{
   color: #0000EE;
 }
+
+form li{
+  list-style: none;
+  width: 30%;
+  padding: 1%;
+}
+
+form{
+  width: 40%;
+  margin: 0 auto;
+}

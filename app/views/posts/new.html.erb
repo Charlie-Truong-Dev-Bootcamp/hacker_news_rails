@@ -1,7 +1,15 @@
 <%= form_for @post do |f| %>
-  <%= f.label :title, "Title:" %>
-  <%= f.text_field :title %>
-  <%= f.label :url, "URL:" %>
-  <%= f.text_field :url %>
-  <%= f.submit "Submit Post"%>
+  <ul>
+    <li>
+      <%= f.label :title, "Title:" %>
+      <%= f.text_field :title %>
+    </li>
+    <li>
+      <%= f.label :url, "URL:" %>
+      <%= f.text_field :url %>
+    </li>
+    <li>
+      <%= f.submit "Submit Post"%>
+    </li>
+  </ul>
 <% end %>
