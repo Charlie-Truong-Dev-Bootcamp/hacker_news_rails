@@ -1,4 +1,6 @@
 HackerNews::Application.routes.draw do
+
+
   resources :users, only: [:new, :create, :show] do
     resources :comments, only: [:index]
     resources :posts, only: [:index]
