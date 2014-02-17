@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
-  before_filter :determine_scope :except => [:create]
+  before_filter :determine_scope, :except => [:create]
 
   def index
-    @comments = @scope.all
+    @model = @scope
+    @comments = @model.comments
+    @comment = Comment.new
   end
 
   def create
@@ -11,16 +13,16 @@ class CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     user.comments << comment
     post.comments << comment
-    redirect_to post_comments(post)
+    redirect_to post_comments_path(post)
   end
 
   private
 
   def determine_scope
     if params[:user_id]
-      @scope = User.find(params[:user_id]).comments
+      @scope = User.find(params[:user_id])
     else
-      @scope = Post.find(params[:post_id]).comments
+      @scope = Post.find(params[:post_id])
     end
   end
 
