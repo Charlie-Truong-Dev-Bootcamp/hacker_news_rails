@@ -7,6 +7,7 @@
     <li>Author: <%=link_to post.user.username, user_path(post.user)%> </li>
     <li>Date: <%= post.created_at %> </li>
     <li><%= link_to post.comments.count.to_s + " Comments", post_comments_path(post) %></li>
+    <li><%= post.votes.count.to_s +  " Votes" %> <%= link_to "Up Vote", post_votes_path(post), method: :post %></li>
   </ul>
 </li>
 <% end %>
