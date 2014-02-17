@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.create(post_params)
+    comment = Comment.create(comment_params)
     user = current_user
     post = Post.find(params[:post_id])
     user.comments << comment
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def post_params
+  def comment_params
     params.require(:comment).permit(:text)
   end
 end
