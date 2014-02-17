@@ -1,5 +1,5 @@
 HackerNews::Application.routes.draw do
-
+  root 'posts#index'
 
   resources :users, only: [:new, :create, :show] do
     resources :comments, only: [:index]
@@ -12,4 +12,6 @@ HackerNews::Application.routes.draw do
     resources :votes, only: [:create]
     resources :comments, only: [:create, :index]
   end
+
+  resources :sessions, only:[:new, :create, :delete]
 end
