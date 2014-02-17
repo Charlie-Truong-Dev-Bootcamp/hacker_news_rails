@@ -13,5 +13,5 @@ HackerNews::Application.routes.draw do
     resources :comments, only: [:create, :index]
   end
 
-  resources :sessions, only:[:new, :create, :delete]
+  resources :sessions, only:[:new, :create, :destroy]
 end
