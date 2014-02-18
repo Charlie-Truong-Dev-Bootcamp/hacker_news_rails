@@ -1,24 +1,32 @@
 <% if @model.is_a? Post %>
   <% post = @model %>
-  <h3><%= link_to post.title, post.url %></h3>
+  <h3 id="post_comments_title"><%= link_to post.title, post.url %></h3>
   <%=form_for [:post, @comment] do |f| %>
-    <%= f.label :text, "Comment" %>
-    <%= f.text_area :text, size: "30x5" %>
-    <%= f.submit "Submit Comment" %>
+    <ul>
+      <li>
+        <%= f.label :text, "Comment" %>
+        <%= f.text_area :text, size: "30x5" %>
+      </li>
+      <li>
+        <%= f.submit "Submit Comment" %>
+      </li>
+    </ul>
   <% end %>
 <% end %>
 
 <ul>
 <% @comments.each do |comment| %>
   <li>
-    <ul>
-      <li><%= comment.text %></li>
+    <table>
+      <tr><th colspan="2"><%= comment.text %></th></tr>
       <% if @model.is_a? User %>
-        <li>For: <%= link_to comment.post.title, post_comments_path(comment.post) %></li>
+        <tr><td colspan="2">For: <%= link_to comment.post.title, post_comments_path(comment.post) %></td></tr>
       <% end %>
-      <li>By: <%= link_to comment.user.username, user_path(comment.user) %></li>
-      <li>On: <%= comment.created_at %></li>
-    </ul>
+      <tr>
+        <td>By: <%= link_to comment.user.username, user_path(comment.user) %></td>
+        <td>On: <%= date_format(comment.created_at) %></td>
+      </tr>
+    </table>
   </li>
 <% end %>
 </ul>

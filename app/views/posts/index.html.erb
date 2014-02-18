@@ -1,14 +1,25 @@
-<p> Index Page </p>
 <ul>
 <% @posts.each do |post| %>
 <li>
-  <ul>
-    <li><%= link_to post.title, post.url %></li>
-    <li>Author: <%=link_to post.user.username, user_path(post.user)%> </li>
-    <li>Date: <%= post.created_at %> </li>
-    <li><%= link_to post.comments.count.to_s + " Comments", post_comments_path(post) %></li>
-    <li><%= post.votes.count.to_s +  " Votes" %> <%= link_to "Up Vote", post_votes_path(post), method: :post %></li>
-  </ul>
+  <table>
+    <tr><th colspan="2"><h3><%= link_to post.title, post.url %></h3></th></tr>
+    <tr>
+      <td>
+        Author: <%=link_to post.user.username, user_path(post.user)%>
+      </td>
+      <td>
+        Date: <%= date_format(post.created_at) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to post.comments.count.to_s + " Comments", post_comments_path(post) %>
+      </td>
+      <td>
+        <%= post.votes.count.to_s +  " Votes" %> <%= link_to "Up Vote", post_votes_path(post), method: :post %>
+      </td>
+    </tr>
+  </table>
 </li>
 <% end %>
 </ul>
