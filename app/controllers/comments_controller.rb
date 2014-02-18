@@ -8,12 +8,18 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.create(comment_params)
-    user = current_user
-    post = Post.find(params[:post_id])
-    user.comments << comment
-    post.comments << comment
-    redirect_to post_comments_path(post)
+    if session[:user_id].nil?
+      flash[:error] = "You need to sign-in or sign-up to comment."
+      post = Post.find(params[:post_id])
+      redirect_to post_comments_path(post)
+    else
+      comment = Comment.create(comment_params)
+      user = current_user
+      post = Post.find(params[:post_id])
+      user.comments << comment
+      post.comments << comment
+      redirect_to post_comments_path(post)
+    end
   end
 
   private
