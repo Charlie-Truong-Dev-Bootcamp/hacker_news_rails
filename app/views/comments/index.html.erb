@@ -1,6 +1,6 @@
 <% if @model.is_a? Post %>
   <% post = @model %>
-  <h3 id="post_title"><%= link_to post.title, post.url %></h3>
+  <h3 id="post_comments_title"><%= link_to post.title, post.url %></h3>
   <%=form_for [:post, @comment] do |f| %>
     <ul>
       <li>
