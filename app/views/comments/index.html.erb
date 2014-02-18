@@ -24,7 +24,7 @@
       <% end %>
       <tr>
         <td>By: <%= link_to comment.user.username, user_path(comment.user) %></td>
-        <td>On: <%= comment.created_at %></td>
+        <td>On: <%= date_format(comment.created_at) %></td>
       </tr>
     </table>
   </li>

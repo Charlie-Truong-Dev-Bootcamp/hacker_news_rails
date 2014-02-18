@@ -8,7 +8,7 @@
         Author: <%=link_to post.user.username, user_path(post.user)%>
       </td>
       <td>
-        Date: <%= post.created_at %>
+        Date: <%= date_format(post.created_at) %>
       </td>
     </tr>
     <tr>
