@@ -1,8 +1,15 @@
 class PostsController < ApplicationController
   before_filter :determine_scope, :except => [:create, :new]
+  before_filter :sign_in, :only => [:create, :new]
 
   def index
     @posts = @scope.all
+  end
+
+  def sign_in
+    if session[:user_id].nil?
+      redirect_to :new_session
+    end
   end
 
   def new
