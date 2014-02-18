@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :determine_scope, :except => [:create, :new]
-  before_filter :sign_in, :only => [:create]
+  before_filter :sign_in, :only => [:create, :new]
 
   def index
     @posts = @scope.all
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def sign_in
     if session[:user_id].nil?
-      redirect_to :sign_in
+      redirect_to :new_session
     end
   end
 
