@@ -1,4 +1,7 @@
 <h1 id="title">Hacker News </h1>
+<% if session[:user_id] %>
+      <h5 id="hello">Hello, <%=signed_in_user(session[:user_id])%></h5>
+<% end %>
 <nav>
   <ul>
   <li><%= link_to "Home", root_path %></li>

@@ -14,6 +14,7 @@ html, body {
 #title{
   margin: 0;
   padding: 2%;
+  display: inline-block;
 }
 
 ul li{
@@ -74,4 +75,10 @@ table th{
   color: red;
   width: 30%;
   margin: 0 auto;
+}
+
+#hello{
+  display: inline;
+  float: right;
+  margin: 5%;
 }
