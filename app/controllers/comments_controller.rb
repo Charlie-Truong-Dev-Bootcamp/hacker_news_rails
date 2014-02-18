@@ -8,12 +8,14 @@ class CommentsController < ApplicationController
   end
 
   def create
+    # consider a before_filter
     if session[:user_id].nil?
       flash[:error] = "You need to sign-in or sign-up to comment."
       post = Post.find(params[:post_id])
       redirect_to post_comments_path(post)
     else
       comment = Comment.create(comment_params)
+      # no need for this temp local variable, accessing current_user is just fine
       user = current_user
       post = Post.find(params[:post_id])
       user.comments << comment

@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_user
+    # you need to use a ivar here to cache the value for the duration of the request
+    # @user ||= ...
     user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
